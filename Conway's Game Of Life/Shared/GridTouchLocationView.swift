@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct GridTouchLocationView: View {
+    var lineWidth: CGFloat
+    var cellSize: CGSize
     let touchLocation: (Cell) -> Void
     
-    init(touchLocation: @escaping (Cell) -> Void) {
+    init(lineWidth: CGFloat = 0.25, cellSize: CGSize = CGSize(width: 10, height: 10), touchLocation: @escaping (Cell) -> Void) {
+        self.lineWidth = lineWidth
+        self.cellSize = cellSize
         self.touchLocation = touchLocation
     }
     
@@ -25,7 +29,7 @@ struct GridTouchLocationView: View {
                 touchLocation(Cell(row: row, column: column, pos: pos))
             }
             
-            GridView { info in
+            GridView(lineWidth: lineWidth, rect: cellSize) { info in
                 gridInfo = info
             }
         }

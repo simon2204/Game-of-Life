@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct GridView: View {
-    var strokeColor: Color
     var lineWidth: CGFloat
     var cellSize: CGSize
     var gridInformation: (GridInformation) -> Void
     
-    init(strokeColor: Color = .gray, lineWidth: CGFloat = 0.25, rect: CGSize = CGSize(width: 10, height: 10), gridInformation: @escaping (GridInformation) -> Void) {
-        self.strokeColor = strokeColor
+    init(strokeColor: Color = .gray,
+         lineWidth: CGFloat = 0.25,
+         rect: CGSize = CGSize(width: 10, height: 10),
+         gridInformation: @escaping (GridInformation) -> Void) {
         self.lineWidth = lineWidth
         self.cellSize = rect
         self.gridInformation = gridInformation
@@ -37,7 +38,7 @@ struct GridView: View {
                     path.addLine(to: CGPoint(x: size.width, y: y))
                 }
             }
-            return AnyView(path.stroke(strokeColor, lineWidth: lineWidth))
+            return AnyView(path.stroke(lineWidth: lineWidth))
         }
     }
     

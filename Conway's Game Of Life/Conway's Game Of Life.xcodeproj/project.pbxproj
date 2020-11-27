@@ -21,6 +21,8 @@
 		F48CC9FD256F00CF00A6F4A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F48CC9E7256F00CF00A6F4A2 /* Assets.xcassets */; };
 		F48CCA09256F00DE00A6F4A2 /* GameOfLife.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CCA08256F00DE00A6F4A2 /* GameOfLife.swift */; };
 		F48CCA0A256F00DE00A6F4A2 /* GameOfLife.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CCA08256F00DE00A6F4A2 /* GameOfLife.swift */; };
+		F4F43BD72571ACAB004D0B7D /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F43BD62571ACAB004D0B7D /* Color+.swift */; };
+		F4F43BD82571ACAB004D0B7D /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F43BD62571ACAB004D0B7D /* Color+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,7 @@
 		F48CC9F6256F00CF00A6F4A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F48CC9F7256F00CF00A6F4A2 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		F48CCA08256F00DE00A6F4A2 /* GameOfLife.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOfLife.swift; sourceTree = "<group>"; };
+		F4F43BD62571ACAB004D0B7D /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +77,7 @@
 				F48CCA08256F00DE00A6F4A2 /* GameOfLife.swift */,
 				17C8BECC2570872F00B32F93 /* GridView.swift */,
 				17E111A2257195A8002D71AF /* GridTouchLocationView.swift */,
+				F4F43BD62571ACAB004D0B7D /* Color+.swift */,
 				F48CC9E7256F00CF00A6F4A2 /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -203,6 +207,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4F43BD72571ACAB004D0B7D /* Color+.swift in Sources */,
 				F48CC9FA256F00CF00A6F4A2 /* ContentView.swift in Sources */,
 				17C8BED4257097B900B32F93 /* NSTouchLocationView.swift in Sources */,
 				F48CCA09256F00DE00A6F4A2 /* GameOfLife.swift in Sources */,
@@ -216,6 +221,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4F43BD82571ACAB004D0B7D /* Color+.swift in Sources */,
 				F48CC9FB256F00CF00A6F4A2 /* ContentView.swift in Sources */,
 				17C8BED5257097B900B32F93 /* NSTouchLocationView.swift in Sources */,
 				F48CCA0A256F00DE00A6F4A2 /* GameOfLife.swift in Sources */,
