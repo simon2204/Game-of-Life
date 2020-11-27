@@ -36,7 +36,7 @@ class GameOfLife {
     }
     
     
-    func startTimer() {
+    func start() {
         printGeneration()
         let queue = DispatchQueue(label: "gameOfLife", attributes: .concurrent)
 
@@ -47,15 +47,15 @@ class GameOfLife {
         timer?.schedule(deadline: .now(), repeating: .milliseconds(350), leeway: .milliseconds(20))
 
         timer?.setEventHandler {
-            self.setNextGeneration()
-            print("")
-            self.printGeneration()
+//            self.setNextGeneration()
+//            print("")
+//            self.printGeneration()
         }
 
         timer?.resume()
     }
 
-    func stopTimer() {
+    func stop() {
         timer?.cancel()
         timer = nil
     }

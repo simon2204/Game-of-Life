@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17C8BECD2570872F00B32F93 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C8BECC2570872F00B32F93 /* GridView.swift */; };
+		17C8BECE2570872F00B32F93 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C8BECC2570872F00B32F93 /* GridView.swift */; };
+		17C8BED4257097B900B32F93 /* TouchLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C8BED3257097B900B32F93 /* TouchLocationView.swift */; };
+		17C8BED5257097B900B32F93 /* TouchLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C8BED3257097B900B32F93 /* TouchLocationView.swift */; };
 		F48CC9F8256F00CF00A6F4A2 /* Conway_s_Game_Of_LifeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CC9E5256F00CD00A6F4A2 /* Conway_s_Game_Of_LifeApp.swift */; };
 		F48CC9F9256F00CF00A6F4A2 /* Conway_s_Game_Of_LifeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CC9E5256F00CD00A6F4A2 /* Conway_s_Game_Of_LifeApp.swift */; };
 		F48CC9FA256F00CF00A6F4A2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CC9E6256F00CD00A6F4A2 /* ContentView.swift */; };
@@ -18,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		17C8BECC2570872F00B32F93 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
+		17C8BED3257097B900B32F93 /* TouchLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchLocationView.swift; sourceTree = "<group>"; };
 		F48CC9E5256F00CD00A6F4A2 /* Conway_s_Game_Of_LifeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conway_s_Game_Of_LifeApp.swift; sourceTree = "<group>"; };
 		F48CC9E6256F00CD00A6F4A2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F48CC9E7256F00CF00A6F4A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -63,6 +69,7 @@
 				F48CC9E5256F00CD00A6F4A2 /* Conway_s_Game_Of_LifeApp.swift */,
 				F48CC9E6256F00CD00A6F4A2 /* ContentView.swift */,
 				F48CCA08256F00DE00A6F4A2 /* GameOfLife.swift */,
+				17C8BECC2570872F00B32F93 /* GridView.swift */,
 				F48CC9E7256F00CF00A6F4A2 /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -88,6 +95,7 @@
 		F48CC9F5256F00CF00A6F4A2 /* macOS */ = {
 			isa = PBXGroup;
 			children = (
+				17C8BED3257097B900B32F93 /* TouchLocationView.swift */,
 				F48CC9F6256F00CF00A6F4A2 /* Info.plist */,
 				F48CC9F7256F00CF00A6F4A2 /* macOS.entitlements */,
 			);
@@ -192,7 +200,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F48CC9FA256F00CF00A6F4A2 /* ContentView.swift in Sources */,
+				17C8BED4257097B900B32F93 /* TouchLocationView.swift in Sources */,
 				F48CCA09256F00DE00A6F4A2 /* GameOfLife.swift in Sources */,
+				17C8BECD2570872F00B32F93 /* GridView.swift in Sources */,
 				F48CC9F8256F00CF00A6F4A2 /* Conway_s_Game_Of_LifeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -202,7 +212,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F48CC9FB256F00CF00A6F4A2 /* ContentView.swift in Sources */,
+				17C8BED5257097B900B32F93 /* TouchLocationView.swift in Sources */,
 				F48CCA0A256F00DE00A6F4A2 /* GameOfLife.swift in Sources */,
+				17C8BECE2570872F00B32F93 /* GridView.swift in Sources */,
 				F48CC9F9256F00CF00A6F4A2 /* Conway_s_Game_Of_LifeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
