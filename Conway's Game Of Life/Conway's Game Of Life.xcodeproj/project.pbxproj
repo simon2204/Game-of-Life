@@ -13,6 +13,12 @@
 		17C8BED5257097B900B32F93 /* NSTouchLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C8BED3257097B900B32F93 /* NSTouchLocationView.swift */; };
 		17E111A3257195A8002D71AF /* GridTouchLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E111A2257195A8002D71AF /* GridTouchLocationView.swift */; };
 		17E111A4257195A8002D71AF /* GridTouchLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E111A2257195A8002D71AF /* GridTouchLocationView.swift */; };
+		F486B6EC2572FCF400F4DC96 /* gameOfLife.c in Sources */ = {isa = PBXBuildFile; fileRef = F486B6EB2572FCF400F4DC96 /* gameOfLife.c */; };
+		F486B6ED2572FCF400F4DC96 /* gameOfLife.c in Sources */ = {isa = PBXBuildFile; fileRef = F486B6EB2572FCF400F4DC96 /* gameOfLife.c */; };
+		F486B7082573013E00F4DC96 /* GridModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F486B7072573013E00F4DC96 /* GridModel.swift */; };
+		F486B7092573013E00F4DC96 /* GridModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F486B7072573013E00F4DC96 /* GridModel.swift */; };
+		F486B7112573111B00F4DC96 /* GridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F486B7102573111B00F4DC96 /* GridViewModel.swift */; };
+		F486B7122573111B00F4DC96 /* GridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F486B7102573111B00F4DC96 /* GridViewModel.swift */; };
 		F48CC9F8256F00CF00A6F4A2 /* Conway_s_Game_Of_LifeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CC9E5256F00CD00A6F4A2 /* Conway_s_Game_Of_LifeApp.swift */; };
 		F48CC9F9256F00CF00A6F4A2 /* Conway_s_Game_Of_LifeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CC9E5256F00CD00A6F4A2 /* Conway_s_Game_Of_LifeApp.swift */; };
 		F48CC9FA256F00CF00A6F4A2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48CC9E6256F00CD00A6F4A2 /* ContentView.swift */; };
@@ -29,6 +35,9 @@
 		17C8BECC2570872F00B32F93 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
 		17C8BED3257097B900B32F93 /* NSTouchLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTouchLocationView.swift; sourceTree = "<group>"; };
 		17E111A2257195A8002D71AF /* GridTouchLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridTouchLocationView.swift; sourceTree = "<group>"; };
+		F486B6EB2572FCF400F4DC96 /* gameOfLife.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = gameOfLife.c; sourceTree = "<group>"; };
+		F486B7072573013E00F4DC96 /* GridModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridModel.swift; sourceTree = "<group>"; };
+		F486B7102573111B00F4DC96 /* GridViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridViewModel.swift; sourceTree = "<group>"; };
 		F48CC9E5256F00CD00A6F4A2 /* Conway_s_Game_Of_LifeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conway_s_Game_Of_LifeApp.swift; sourceTree = "<group>"; };
 		F48CC9E6256F00CD00A6F4A2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F48CC9E7256F00CF00A6F4A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -74,10 +83,13 @@
 			children = (
 				F48CC9E5256F00CD00A6F4A2 /* Conway_s_Game_Of_LifeApp.swift */,
 				F48CC9E6256F00CD00A6F4A2 /* ContentView.swift */,
-				F48CCA08256F00DE00A6F4A2 /* GameOfLife.swift */,
-				17C8BECC2570872F00B32F93 /* GridView.swift */,
 				17E111A2257195A8002D71AF /* GridTouchLocationView.swift */,
+				17C8BECC2570872F00B32F93 /* GridView.swift */,
+				F486B7102573111B00F4DC96 /* GridViewModel.swift */,
+				F486B7072573013E00F4DC96 /* GridModel.swift */,
 				F4F43BD62571ACAB004D0B7D /* Color+.swift */,
+				F48CCA08256F00DE00A6F4A2 /* GameOfLife.swift */,
+				F486B6EB2572FCF400F4DC96 /* gameOfLife.c */,
 				F48CC9E7256F00CF00A6F4A2 /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -211,9 +223,12 @@
 				F48CC9FA256F00CF00A6F4A2 /* ContentView.swift in Sources */,
 				17C8BED4257097B900B32F93 /* NSTouchLocationView.swift in Sources */,
 				F48CCA09256F00DE00A6F4A2 /* GameOfLife.swift in Sources */,
+				F486B6EC2572FCF400F4DC96 /* gameOfLife.c in Sources */,
 				17E111A3257195A8002D71AF /* GridTouchLocationView.swift in Sources */,
 				17C8BECD2570872F00B32F93 /* GridView.swift in Sources */,
 				F48CC9F8256F00CF00A6F4A2 /* Conway_s_Game_Of_LifeApp.swift in Sources */,
+				F486B7112573111B00F4DC96 /* GridViewModel.swift in Sources */,
+				F486B7082573013E00F4DC96 /* GridModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,9 +240,12 @@
 				F48CC9FB256F00CF00A6F4A2 /* ContentView.swift in Sources */,
 				17C8BED5257097B900B32F93 /* NSTouchLocationView.swift in Sources */,
 				F48CCA0A256F00DE00A6F4A2 /* GameOfLife.swift in Sources */,
+				F486B6ED2572FCF400F4DC96 /* gameOfLife.c in Sources */,
 				17E111A4257195A8002D71AF /* GridTouchLocationView.swift in Sources */,
 				17C8BECE2570872F00B32F93 /* GridView.swift in Sources */,
 				F48CC9F9256F00CF00A6F4A2 /* Conway_s_Game_Of_LifeApp.swift in Sources */,
+				F486B7122573111B00F4DC96 /* GridViewModel.swift in Sources */,
+				F486B7092573013E00F4DC96 /* GridModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
