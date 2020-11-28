@@ -8,36 +8,24 @@
 import SwiftUI
 
 struct GridTouchLocationView: View {
-    var lineWidth: CGFloat
-    var cellSize: CGSize
+    var lineWidth: CGFloat = 0.25
+    var cellSize: CGSize = CGSize(width: 10, height: 10)
     let touchLocation: (Cell) -> Void
     
-    init(lineWidth: CGFloat = 0.25, cellSize: CGSize = CGSize(width: 10, height: 10), touchLocation: @escaping (Cell) -> Void) {
-        self.lineWidth = lineWidth
-        self.cellSize = cellSize
-        self.touchLocation = touchLocation
-    }
-    
     var body: some View {
-        var gridInfo = GridView.GridInformation()
-        
-        ZStack {
+        GridView(lineWidth: lineWidth, rect: cellSize) { gridInfo in
             NSTouchLocationView { point in
                 let row = Int(point.y / gridInfo.cellSize.height)
                 let column = Int(point.x / gridInfo.cellSize.width)
                 let pos = row * gridInfo.columns + column
                 touchLocation(Cell(row: row, column: column, pos: pos))
             }
-            
-            GridView(lineWidth: lineWidth, rect: cellSize) { info in
-                gridInfo = info
-            }
         }
     }
     
     struct Cell {
-        var row: Int
-        var column: Int
-        var pos: Int
+        let row: Int
+        let column: Int
+        let pos: Int
     }
 }

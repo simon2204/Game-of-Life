@@ -47,9 +47,9 @@ class GameOfLife {
         timer?.schedule(deadline: .now(), repeating: .milliseconds(350), leeway: .milliseconds(20))
 
         timer?.setEventHandler {
-//            self.setNextGeneration()
-//            print("")
-//            self.printGeneration()
+            let _ = self.setNextGeneration()
+            print("")
+            self.printGeneration()
         }
 
         timer?.resume()

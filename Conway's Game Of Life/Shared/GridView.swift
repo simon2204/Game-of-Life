@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-struct GridView: View {
+struct GridView<UnderlyingView: View>: View {
     var lineWidth: CGFloat
     var cellSize: CGSize
-    var gridInformation: (GridInformation) -> Void
+    var gridInformation: (GridInformation) -> UnderlyingView
     
     init(strokeColor: Color = .gray,
          lineWidth: CGFloat = 0.25,
          rect: CGSize = CGSize(width: 10, height: 10),
-         gridInformation: @escaping (GridInformation) -> Void) {
+         gridInformation: @escaping (GridInformation) -> UnderlyingView) {
         self.lineWidth = lineWidth
         self.cellSize = rect
         self.gridInformation = gridInformation
@@ -27,7 +27,6 @@ struct GridView: View {
             let rows = Int(size.height / cellSize.height) + 1
             let columns = Int(size.width / cellSize.width) + 1
             let gridInformation = GridInformation(size: size, rows: rows, columns: columns, cellSize: cellSize)
-            self.gridInformation(gridInformation)
             let path = Path { path in
                 for x in stride(from: 0, to: size.width, by: cellSize.width) {
                     path.move(to: CGPoint(x: x, y: 0))
@@ -38,7 +37,11 @@ struct GridView: View {
                     path.addLine(to: CGPoint(x: size.width, y: y))
                 }
             }
-            return AnyView(path.stroke(lineWidth: lineWidth))
+            
+            return AnyView(ZStack {
+                self.gridInformation(gridInformation)
+                path.stroke(lineWidth: lineWidth)
+            })
         }
     }
     
