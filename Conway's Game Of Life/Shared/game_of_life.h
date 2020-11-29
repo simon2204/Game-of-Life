@@ -15,20 +15,22 @@
 
 #endif /* game_of_life_h */
 
+int _main(void);
+
 extern void game_of_life(int max_generations);
 
 extern void set_generation_from_string(char string[]);
+
+extern bool is_set(short index, unsigned char generation[]);
+
+extern bool set_next_generation(void);
+
+extern void set_bit(short index, unsigned char generation[]);
+
+extern void delete_bit(short index, unsigned char generation[]);
 
 int all_rows(void);
 
 int all_cols(void);
 
 int get_segments(void);
-
-bool is_bit_set_at_index(int index);
-
-void set_bit_at_index(int index);
-
-void delete_bit_at_index(int index);
-
-bool next_generation(void);

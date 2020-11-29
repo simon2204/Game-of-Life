@@ -51,6 +51,41 @@ unsigned char generation_copy[SEGMENTS];
 
 // MARK: Initialisierung
 
+int _main()
+{
+    char glider[] =
+    "0000000100"
+    "0000000101"
+    "0010000110"
+    "0010100000"
+    "0011000000"
+    "0000000000"
+    "0000000000"
+    "0000000000"
+    "0000000000"
+    "0000000000";
+    
+//    char sonne[] =
+//    "0001100000"
+//    "0010010000"
+//    "0100001000"
+//    "1000000100"
+//    "1000000100"
+//    "0100001000"
+//    "0010010000"
+//    "0001100000"
+//    "0000000000"
+//    "0000000000";
+    
+//    char beispiel_aus_aufgabenstellung[] = "111000001000010111000100000010";
+    
+    set_generation_from_string(glider);
+//    print_generation();
+//    game_of_life(30);
+    
+    return 1;
+}
+
 void game_of_life(int max_generations)
 {
     int i;
@@ -132,17 +167,6 @@ void get_generation_as_string(char string[ALL_CELLS])
 
 // MARK: Set and delete Bit
 
-void delete_bit(short index, unsigned char generation[SEGMENTS])
-{
-    if (index < 0 || index >= ALL_CELLS)
-    {
-        return;
-    }
-    short segment = index / 8;
-    short element = index % 8;
-    generation[segment] &= ~(0x80u >> element);
-}
-
 void set_bit(short index, unsigned char generation[SEGMENTS])
 {
     if (index < 0 || index >= ALL_CELLS)
@@ -152,6 +176,18 @@ void set_bit(short index, unsigned char generation[SEGMENTS])
     short segment = index / 8;
     short element = index % 8;
     generation[segment] |= (0x80u >> element);
+}
+
+
+void delete_bit(short index, unsigned char generation[SEGMENTS])
+{
+    if (index < 0 || index >= ALL_CELLS)
+    {
+        return;
+    }
+    short segment = index / 8;
+    short element = index % 8;
+    generation[segment] &= ~(0x80u >> element);
 }
 
 // MARK: Is bit set?
@@ -258,29 +294,6 @@ char char_in_field(short row, short column)
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // MARK: - Funktions for Swift
 
 int all_rows()
@@ -296,25 +309,5 @@ int all_cols()
 int get_segments()
 {
     return SEGMENTS;
-}
-
-bool is_bit_set_at_index(int index)
-{
-    return is_set(index, generation);
-}
-
-bool next_generation(void)
-{
-    return set_next_generation();
-}
-
-void set_bit_at_index(int index)
-{
-    set_bit(index, generation);
-}
-
-void delete_bit_at_index(int index)
-{
-    delete_bit(index, generation);
 }
 

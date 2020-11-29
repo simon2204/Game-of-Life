@@ -3,3 +3,4 @@
 //
 
 #include "game_of_life.h"
+#include "expose_to_swift.h"
