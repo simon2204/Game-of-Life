@@ -11,7 +11,11 @@ import SwiftUI
 struct Conway_s_Game_Of_LifeApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            #if os(macOS)
+            MacOSContentView()
+            #elseif os(iOS)
+            IOSContentView()
+            #endif
         }
     }
 }

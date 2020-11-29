@@ -1,10 +1,11 @@
 //
-//  main.c
-//  Conway’s Game of Life
+//  game_of_life.c
+//  Conway's Game Of Life
 //
-//  Created by Simon Schöpke on 21.11.20.
+//  Created by Simon Schöpke on 29.11.20.
 //
 
+#include "game_of_life.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -57,7 +58,6 @@ void game_of_life(int max_generations)
     for (i = 0; i < max_generations && isMutating; i++)
     {
         isMutating = set_next_generation();
-        system("clear");
         printf("%d\n", i);
         print_generation();
         usleep(1000000 / 3);
@@ -256,3 +256,65 @@ char char_in_field(short row, short column)
 {
     return is_set_for_cell(row, column, generation) ? 'o' : ' ';
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// MARK: - Funktions for Swift
+
+int all_rows()
+{
+    return ALL_ROWS;
+}
+
+int all_cols()
+{
+    return ALL_COLS;
+}
+
+int get_segments()
+{
+    return SEGMENTS;
+}
+
+bool is_bit_set_at_index(int index)
+{
+    return is_set(index, generation);
+}
+
+bool next_generation(void)
+{
+    return set_next_generation();
+}
+
+void set_bit_at_index(int index)
+{
+    set_bit(index, generation);
+}
+
+void delete_bit_at_index(int index)
+{
+    delete_bit(index, generation);
+}
+

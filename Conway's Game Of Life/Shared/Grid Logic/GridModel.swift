@@ -9,16 +9,13 @@ import SwiftUI
 
 struct GridModel {
     var cells: [Cell]
-    var lineWidth: CGFloat = 0.25
     var rows: Int
     var columns: Int
-    var cellSize: CGSize
     
     init(rows: Int, columns: Int) {
         self.rows = rows
         self.columns = columns
         cells = [Cell]()
-        cellSize = CGSize(width: 0, height: 0)
         addCells(rows: rows, columns: columns)
     }
     
@@ -32,13 +29,7 @@ struct GridModel {
             }
         }
     }
-    
-    mutating func adjustCellSizeForGridSize(_ gridSize: CGSize) {
-        let cellWidth = gridSize.width / CGFloat(columns)
-        let cellHeight = gridSize.height / CGFloat(rows)
-        cellSize = CGSize(width: cellWidth, height: cellHeight)
-    }
-    
+        
     mutating func setState(_ state: Cell.State, forCellID cellID: Int) {
         cells[cellID].state = state
     }
@@ -55,21 +46,28 @@ struct GridModel {
         var id: Int
         var row: Int
         var column: Int
-        var state: State = .plain
+        var state: State = .dead
         
         var color: Color {
             switch state {
             case .alive:
                 return .white
             case .dead:
-                return .gray
-            case .plain:
-                return .clear
+                return .init(.displayP3, white: 1, opacity: 0.00001)
+            }
+        }
+        
+        var switchState: State {
+            switch state {
+            case .alive:
+                return .dead
+            case .dead:
+                return .alive
             }
         }
         
         enum State {
-            case alive, dead, plain
+            case alive, dead
         }
     }
 }

@@ -11,33 +11,30 @@ class GameOfLife {
     private var generation: [UInt8]
     private var generationCopy: [UInt8]!
     private var segments: Int
-    private let width: Int
-    private let height: Int
+    private let columns: Int
+    private let rows: Int
     private var size: Int
     
     var timer: DispatchSourceTimer?
     
-    init(width: Int, height: Int) {
-        self.width = width
-        self.height = height
-        size = width * height
+    init(rows: Int, columns: Int) {
+        self.rows = rows
+        self.columns = columns
+        size = rows * columns
         segments = size / 8 + 1
         generation = Array(repeating: 0, count: segments)
     }
     
-    init?(_ firstGeneration: [String]) {
-        guard !firstGeneration.isEmpty else { return nil }
-        width = firstGeneration.first!.count
-        height = firstGeneration.count
-        size = width * height
+    init(_ firstGeneration: [String]) {
+        columns = firstGeneration.first!.count
+        rows = firstGeneration.count
+        size = columns * rows
         segments = size / 8 + 1
         generation = Array(repeating: 0, count: segments)
         setGenerationFromString(firstGeneration)
     }
     
-    
-    func start() {
-        printGeneration()
+    func start(generationDidSet: @escaping () -> Void) {
         let queue = DispatchQueue(label: "gameOfLife", attributes: .concurrent)
 
         timer?.cancel()
@@ -48,8 +45,8 @@ class GameOfLife {
 
         timer?.setEventHandler {
             let _ = self.setNextGeneration()
-            print("")
-            self.printGeneration()
+            generationDidSet()
+//            if !nextGenerationDidSet { self.stop() }
         }
 
         timer?.resume()
@@ -58,6 +55,10 @@ class GameOfLife {
     func stop() {
         timer?.cancel()
         timer = nil
+    }
+    
+    func isBitSetAtIndex(_ index: Int) -> Bool {
+        return isBitSetAtIndex(index, for: generation)
     }
     
     func setNextGeneration() -> Bool {
@@ -91,6 +92,14 @@ class GameOfLife {
                 index += 1
             }
         }
+    }
+    
+    func deleteBitAtIndex(_ index: Int) {
+        deleteBitAtIndex(index, for: &generation)
+    }
+    
+    func setBitAtIndex(_ index: Int) {
+        setBitAtIndex(index, for: &generation)
     }
     
     private func deleteBitAtIndex(_ index: Int, for generation: inout [UInt8]) {
@@ -141,11 +150,11 @@ class GameOfLife {
     }
     
     private func indexToRowAndColumn(_ index: Int) -> (row: Int, column: Int) {
-        return (index / width, index % width)
+        return (index / columns, index % columns)
     }
     
     private func rowAndColumnToIndex(_ row: Int, _ column: Int) -> Int {
-        return row * width + column
+        return row * columns + column
     }
     
     private func indexToSegmentAndElement(_ index: Int) -> (segment: Int, element: Int)? {
@@ -154,7 +163,7 @@ class GameOfLife {
     }
     
     func printGeneration() {
-        for _ in 0..<width {
+        for _ in 0..<columns {
             print("+---", terminator: "")
         }
         
@@ -162,14 +171,14 @@ class GameOfLife {
             print("+");
         }
         
-        for i in 0..<height
+        for i in 0..<rows
         {
-            for j in 0..<width {
+            for j in 0..<columns {
                 print("| \(charInGeneration(row: i, column: j)) ", terminator: "")
             }
             print("|")
             
-            for _ in 0..<width
+            for _ in 0..<columns
             {
                 print("+---", terminator: "");
             }
