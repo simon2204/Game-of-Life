@@ -21,23 +21,69 @@ enum neighbour: int {
 
 // MARK: Required functions
 
+/// Gibt den aktuellen Zustand der Generation im Terminal aus.
 void print_generation(void);
+
+/// Initialisiert die Anfangsgeneration als Bit-Folge, repräsentiert durch einen String.
+/// Eine ‘1‘ bedeutet, dass die Zelle ein Lebewesen enthält, und eine ‘0‘, dass die Zelle kein Lebewesen enthält.
 void set_generation_from_string(char string[]);
+
+/// Gibt den aktuellen Zustand der Generation in der Variable `values` zurück.
 void get_generation_as_string(char string[]);
+
+/// Berechnet ausgehend von der akutellen Generation die nächste Generation.
+/// @return true, wenn die Nachfolgegeneration sich gegenüber der Ausgangsgeneration geändert hat.
 bool set_next_generation(void);
+
+/// Berechnet solange die Generationen  und gibt diese am Bildschirm aus, bis sich die Generationen
+/// nicht mehr ändern oder die Anzahl der berechneten Generationen der durch max_generations übergebenen Anzahl entspricht.
+/// @param max_generations - Anzahl der Berechnungen und Ausgaben  der Generationen.
 void game_of_life(int max_generations);
 
 // MARK: Custom functions
 
-char char_in_field(short row, short column);
-bool is_set(short index, unsigned char generation[]);
-bool is_set_for_cell(short row, short column, unsigned char generation[]);
-bool is_set_for_neighbour(enum neighbour n, short center_index, unsigned char generation[]);
+/// Setzt das Bit auf ‘1‘, an der Stelle `index` in der übergebenen `generation`.
+/// @param index - Position des Bits.
+/// @param generation - Generation, die verändert werden soll.
 void set_bit(short index, unsigned char generation[]);
-void set_bit_for_field(short row, short column);
+
+/// Setzt das Bit auf ‘0‘, an der Stelle `index` in der übergebenen `generation`.
+/// @param index - Position des Bits.
+/// @param generation - Generation, die verändert werden soll.
 void delete_bit(short index, unsigned char generation[]);
-void delete_bit_for_field(short row, short column);
+
+
+/// Überprüft ob ein Bit gesetzt oder nicht gesetzt ist an Stelle `index`, in der übergebenen `generation`.
+/// @param index - Position des Bits
+/// @param generation - Generation, in der die Abfrage geschehen soll.
+/// @return true, falls das Bit an Stelle `index` gesetzt ist.
+bool is_set(short index, unsigned char generation[]);
+
+/// Überprüft ob ein Bit gesetzt oder nicht gesetzt ist an einer bestimmten Stelle, repräsentiert durch `row` und `column`,
+/// in der übergebenen `generation`.
+/// @param row - Zeile, in der sich das Bit befindet.
+/// @param column - Spalte, in der sich das Bit befindet.
+/// @param generation - Generation, in der die Abfrage geschehen soll.
+/// @return true, falls das Bit in der Zeile `row` und in der Spalte `column` gesetzt ist.
+bool is_set_for_cell(short row, short column, unsigned char generation[]);
+
+
+/// Überprüft, ob der Nachbar `n`, von `index` gesetzt ist.
+/// @param n - Nachbar von `index`.
+/// @param index - Index, der maximal acht Nachbarn hat.
+/// @param generation - Generation, in der die Abfrage geschehen soll.
+/// @return true, falls es den Nachbarn `n` für `index` gibt.
+bool is_set_for_neighbour(enum neighbour n, short index, unsigned char generation[]);
+
+/// Zählt die Nachbarn von `index`.
+/// @param index - Index, dessen Nachbarn gezählt werden soll.
+/// @param generation - Generation, in der die Abfrage geschehen soll.
+/// @return Gibt die Anzahl der Nachbarn von `index` zurück.
 short count_neighbours(short index, unsigned char generation[]);
+
+/// Liefert die Repräsentation eines Lebewesens, falls es in einer bestimmten Zeile `row` und Spalte `column` existiert.
+/// @return Repräsentation des Lebewesens.
+char char_in_field(short row, short column);
 
 #define ALL_ROWS 10
 #define ALL_COLS 10
@@ -117,16 +163,21 @@ bool set_next_generation()
         
         if (is_set(i, generation_copy))
         {
+            // Feld ist mit einem Lebewesen belegt
+            // Hat das Lebewesen weniger als zwei oder mehr als drei Nachbarn
             if (n_count < 2 || n_count > 3)
             {
+                // Lebewesen stirbt
                 delete_bit(i, generation);
                 did_mutate = true;
             }
         }
         else
         {
+            // Feld ist unbelegt, aber hat drei belegte Nachbarsfelder
             if (n_count == 3)
             {
+                // Es entsteht ein neues Lebewesen
                 set_bit(i, generation);
                 did_mutate = true;
             }
@@ -169,6 +220,7 @@ void get_generation_as_string(char string[ALL_CELLS])
 
 void set_bit(short index, unsigned char generation[SEGMENTS])
 {
+    // Befindet sich der Index außerhalb des Feldes, dann return.
     if (index < 0 || index >= ALL_CELLS)
     {
         return;
@@ -181,6 +233,7 @@ void set_bit(short index, unsigned char generation[SEGMENTS])
 
 void delete_bit(short index, unsigned char generation[SEGMENTS])
 {
+    // Befindet sich der Index außerhalb des Feldes, dann return.
     if (index < 0 || index >= ALL_CELLS)
     {
         return;
@@ -194,6 +247,7 @@ void delete_bit(short index, unsigned char generation[SEGMENTS])
 
 bool is_set(short index, unsigned char generation[SEGMENTS])
 {
+    // Befindet sich der Index außerhalb des Feldes, dann betrachte es als nicht gesetzt.
     if (index < 0 || index >= ALL_CELLS)
     {
         return false;
@@ -205,6 +259,7 @@ bool is_set(short index, unsigned char generation[SEGMENTS])
 
 bool is_set_for_cell(short row, short column, unsigned char generation[SEGMENTS])
 {
+    // Befindet sich der Index außerhalb des Feldes, dann betrachte es als nicht gesetzt.
     if (row < 0 || column < 0 || row >= ALL_ROWS || column >= ALL_COLS)
     {
         return false;
@@ -212,10 +267,10 @@ bool is_set_for_cell(short row, short column, unsigned char generation[SEGMENTS]
     return is_set((row * ALL_COLS) + column, generation);
 }
 
-bool is_set_for_neighbour(enum neighbour n, short center_index, unsigned char generation[])
+bool is_set_for_neighbour(enum neighbour n, short index, unsigned char generation[])
 {
-    short row = center_index / ALL_COLS;
-    short column = center_index % ALL_COLS;
+    short row = index / ALL_COLS;
+    short column = index % ALL_COLS;
     switch (n) {
         case topLeft:
             return is_set_for_cell(row - 1, column - 1, generation);
@@ -240,14 +295,14 @@ bool is_set_for_neighbour(enum neighbour n, short center_index, unsigned char ge
 
 // MARK: Count neighbours
 
-short count_neighbours(short center_index, unsigned char generation[SEGMENTS])
+short count_neighbours(short index, unsigned char generation[SEGMENTS])
 {
     short n_count = 0;
     enum neighbour n;
     
     for (n = 0; n < all_neighbours; n++)
     {
-        if (is_set_for_neighbour(n, center_index, generation))
+        if (is_set_for_neighbour(n, index, generation))
         {
             n_count++;
         }
